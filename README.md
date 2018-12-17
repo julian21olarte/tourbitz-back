@@ -22,9 +22,8 @@ Backend for tourbitz test (Nodejs + express).
 
 ## Endpoints
 
-> [POST] `/company`
-> create a new company.
-> ```
+> [POST] `/company` create a new company.
+```
     // Example object for request
     {
       "name": "Kubesoft",
@@ -32,11 +31,11 @@ Backend for tourbitz test (Nodejs + express).
       "Country": "Colombia",
       "city": "Bogotá"
     }
-> ```
+```
 
 > [POST] `/contact`
 > create a new contact.
-> ```
+```
     // Example object for request
     {
       "email": "julian21olarte@gmail.com",
@@ -47,7 +46,7 @@ Backend for tourbitz test (Nodejs + express).
       "address": "calle falsa 123",
       "company": "Tourbitz"
     }
-> ```
+```
 
 > [PUT] `/company/{company_id}/contact/{contact_id}`
 > Add a exists contact to exists company.
