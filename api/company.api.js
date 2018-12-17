@@ -19,6 +19,18 @@ const createCompany = (req, res) => {
     });
 }
 
+const getAll = (req, res) => {
+  companyService.getCompanies()
+    .then(companies => {
+      if(!companies && !companies.companies) {
+        return res.status(404).send({message: 'Any company found'});
+      }
+      return res.status(200).send(companies.companies);
+    }).catch(error => {
+      return res.status(500).send({message: 'Internal error', error});
+    });
+}
+
 const addContactToCompany = (req, res) => {
   const company_id = req.params.company_id;
   const contact_id = req.params.contact_id;
@@ -36,11 +48,11 @@ const addContactToCompany = (req, res) => {
 const getContacts = (req, res) => {
   const company_id = req.params.company_id;
   companyService.getContacts(company_id)
-    .then(companies => {
-      if(!companies) {
+    .then(contacts => {
+      if(!contacts && !contacts.contacts) {
         return res.status(404).send({message: 'Error on getting list of contacts from company ' + company_id});
       }
-      return res.status(200).send(companies);
+      return res.status(200).send(contacts.contacts);
     }).catch(error => {
       return res.status(500).send({message: 'Internal error', error});
     });
@@ -49,5 +61,6 @@ const getContacts = (req, res) => {
 module.exports = {
   createCompany,
   addContactToCompany,
-  getContacts
+  getContacts,
+  getAll
 }

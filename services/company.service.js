@@ -14,6 +14,10 @@ const addContactToCompany = (company_id, contact_id) => {
   return hubspot.companies.addContactToCompany({ companyId: company_id, contactVid: contact_id })
 }
 
+const getCompanies = () => {
+  return hubspot.companies.get({properties: ['name', 'description', 'city']});
+}
+
 const getContacts = (company_id) => {
   return hubspot.companies.getContacts(company_id);
 }
@@ -22,5 +26,6 @@ const getContacts = (company_id) => {
 module.exports = {
   createCompany,
   addContactToCompany,
-  getContacts
+  getContacts,
+  getCompanies
 }
